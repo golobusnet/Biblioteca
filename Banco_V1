@@ -1,0 +1,59 @@
+CREATE DATABASE biblioteca;
+
+USE `gbiblioteca`;
+DROP TABLE IF EXISTS `tb_categoria`;
+
+CREATE TABLE `categoria` (
+  `idCategoria` int(11) NOT NULL AUTO_INCREMENT,
+  `descricao` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`idCategoria`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+
+
+CREATE TABLE `editora` (
+  `idEditora` int(11) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`idEditora`)
+) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=latin1;
+
+
+CREATE TABLE `emprestimo` (
+  `dtDevolucao` date DEFAULT NULL,
+  `dtEmprestimo` date DEFAULT NULL,
+  `isbnLivro` varchar(255) NOT NULL DEFAULT '',
+  `idUsuario` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`isbnLivro`,`idUsuario`),
+  KEY `FK7C49D82074824939` (`isbnLivro`),
+  KEY `FK7C49D8206782A964` (`idUsuario`),
+  CONSTRAINT `FK7C49D8206782A964` FOREIGN KEY (`idUsuario`) REFERENCES `tb_usuario` (`idUsuario`),
+  CONSTRAINT `FK7C49D82074824939` FOREIGN KEY (`isbnLivro`) REFERENCES `tb_livro` (`isbn`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+CREATE TABLE `estoque` (
+  `idEstoque` int(11) NOT NULL AUTO_INCREMENT,
+  `isbnLivro` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`idEstoque`),
+  KEY `FKA9B2E9A774824939` (`isbnLivro`),
+  CONSTRAINT `FKA9B2E9A774824939` FOREIGN KEY (`isbnLivro`) REFERENCES `tb_livro` (`isbn`)
+) ENGINE=InnoDB AUTO_INCREMENT=319 DEFAULT CHARSET=latin1;
+
+
+CREATE TABLE `tb_livro` (
+  `isbn` varchar(255) NOT NULL,
+  `autor` varchar(255) DEFAULT NULL,
+  `titulo` varchar(255) DEFAULT NULL,
+  `idCategoria` int(11) DEFAULT NULL,
+  `idEditora` int(11) DEFAULT NULL,
+  PRIMARY KEY (`isbn`),
+  KEY `FKFA6AD5859648DC30` (`idEditora`),
+  KEY `FKFA6AD585BEDDE36E` (`idCategoria`),
+  CONSTRAINT `FKFA6AD585BEDDE36E` FOREIGN KEY (`idCategoria`) REFERENCES `tb_categoria` (`idCategoria`),
+  CONSTRAINT `FKFA6AD5859648DC30` FOREIGN KEY (`idEditora`) REFERENCES `tb_editora` (`idEditora`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE `tb_usuario` (
+  `idUsuario` int(11) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`idUsuario`)
+) ENGINE=InnoDB AUTO_INCREMENT=518 DEFAULT CHARSET=latin1;
