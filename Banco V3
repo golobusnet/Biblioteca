@@ -1,0 +1,45 @@
+Precisa criar chave primário para a tabela apostila...
+
+
+CREATE DATABASE biblioteca;
+
+#ok
+USE biblioteca;
+
+#ok
+CREATE TABLE usuario (
+idUsuario int(11) NOT NULL AUTO_INCREMENT,
+nome varchar(255) DEFAULT NULL,
+endereco varchar(255) default null,
+cpf int(11) default null,
+PRIMARY KEY (idUsuario)
+);
+
+#OK
+CREATE TABLE livro (
+isbn varchar(255) NOT NULL,
+autor varchar(255) DEFAULT NULL,
+titulo varchar(255) DEFAULT NULL,
+edicao int(11) DEFAULT NULL,
+PRIMARY KEY (isbn)
+;
+
+#OK
+CREATE TABLE apostila (
+idApostila int(11) not null, 
+quantidade int(11) default null, 
+autor varchar(50) default null, 
+titulo varchar(50) default null
+primary key (idApostila));
+
+CREATE TABLE emprestimo (
+devolucao date DEFAULT NULL,
+emprestimo date DEFAULT NULL,
+isbnLivro varchar(255) NOT NULL DEFAULT '0',
+idUsuario int(11) NOT NULL DEFAULT '0',
+PRIMARY KEY (isbnLivro,idUsuario),
+KEY (isbnLivro),
+KEY (idUsuario),
+CONSTRAINT FOREIGN KEY (idUsuario) REFERENCES usuario (idUsuario),
+CONSTRAINT FOREIGN KEY (isbnLivro) REFERENCES livro (isbn)
+);
