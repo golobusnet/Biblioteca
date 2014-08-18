@@ -24,39 +24,73 @@ public class Emprestimo {
 			
 			
 			
-			Scanner sc = new Scanner(System.in);
-			Scanner sc2 = new Scanner(System.in);
-			Scanner sc3 = new Scanner(System.in);
-			Scanner sc4 = new Scanner(System.in);
+	     	  //verifica limite de emprestimos 	        
+					
 			
-			System.out.println("Digite a ID do usuario");
-			String opcao4 = sc.nextLine();
-			System.out.println("Digite a ISBN do livro para emprestimo");
-			String opcao3 = sc2.nextLine();
-			System.out.println("data do emprestimo:");
-			String opcao= sc3.nextLine();
-			System.out.println("data para devolucao:");
-			String opcao2 = sc4.nextLine();
-
-			
-			
-			String insertTableSQL = "INSERT INTO emprestimo"
-			+ "(emprestimo, devolucao, isbnLivro, idUsuario ) values"
-			+ "(?,?,?,?)";
-			
-			preparedStatement = conn.prepareStatement(insertTableSQL);
-			preparedStatement.setString(1, opcao);
-			preparedStatement.setString(2,opcao2);
-			preparedStatement.setString(3, opcao3);
-			preparedStatement.setString(4, opcao4);
-			
+//			ResultSet rs = stm.executeQuery("SELECT * FROM usuario"); 
+//					while(rs.next())  
+//				{  
+//					int limite_emprestimos = rs.getInt("limite_emprestimos");
+//										
+//					if(limite_emprestimos>=3){
+//						System.out.println("Limite de emprestimos atingido");
+//					}
+//					
+//					else{
+//						
 						
-			int resultado = preparedStatement.executeUpdate();
-			System.out.println(resultado);
+						Scanner sc = new Scanner(System.in);
+						Scanner sc2 = new Scanner(System.in);
+						Scanner sc3 = new Scanner(System.in);
+						Scanner sc4 = new Scanner(System.in);
+						
+						System.out.println("Digite a ID do usuario");
+						String opcao4 = sc.nextLine();
+						System.out.println("Digite a ISBN do livro para emprestimo");
+						String opcao3 = sc2.nextLine();
+						System.out.println("data do emprestimo:");
+						String opcao= sc3.nextLine();
+						System.out.println("data para devolucao:");
+						String opcao2 = sc4.nextLine();
+
+						
+						
+						String insertTableSQL = "INSERT INTO emprestimo"
+						+ "(emprestimo, devolucao, isbnLivro, idUsuario ) values"
+						+ "(?,?,?,?)";
+						
+						preparedStatement = conn.prepareStatement(insertTableSQL);
+						preparedStatement.setString(1, opcao);
+						preparedStatement.setString(2,opcao2);
+						preparedStatement.setString(3, opcao3);
+						preparedStatement.setString(4, opcao4);
+						
+									
+						int resultado = preparedStatement.executeUpdate();
+						System.out.println(resultado);
+						
+					
+					
+				
+					
+					//}	
+						
+				//	}
+					}
 			
-		
-		
-	}
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
 		
 		catch (SQLException e) {
 			// TODO Auto-generated catch block
