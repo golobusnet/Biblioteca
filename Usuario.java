@@ -6,24 +6,11 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.Scanner;
 
-
 public class Usuario {
-	private int tamanho;
-	
-	
-	public int getTamanho() {
-		return tamanho;
-	}
-
-	public void setTamanho(int tamanho) {
-		this.tamanho = tamanho;
-	}
-
 
 	public void menuUsuario(){
 		Scanner sc = new Scanner(System.in);
 		int opcao = 1;		
-		
 		
 		while(opcao !=0){
 		System.out.println("1- Cadastrar usuario");
@@ -116,10 +103,7 @@ public class Usuario {
 					System.out.println("IDEmprestimo: "+id+" data emprestimo: "+emprestimo+" devolucao:"+devolucao+" ISBNLivro:"+isbnLivro);
 					
 				}
-				
-			
-				
-				
+
 				break;
 			case 4:
 				
@@ -135,7 +119,6 @@ public class Usuario {
 
 				
 				break;
-				
 				
 			case 5:			
 			//Exibir usuarios
@@ -154,9 +137,7 @@ public class Usuario {
 					
 				}
 			break;
-			}
-		
-			
+			}	
 	}
 	
 	catch (SQLException e) {
@@ -177,10 +158,7 @@ public class Usuario {
 		e.getMessage();
 		e.printStackTrace();
 	}
-		
-		
 		}
-		
 	}
 	}
 	
