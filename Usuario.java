@@ -8,9 +8,23 @@ import java.util.Scanner;
 
 
 public class Usuario {
+	private int tamanho;
+	
+	
+	public int getTamanho() {
+		return tamanho;
+	}
+
+	public void setTamanho(int tamanho) {
+		this.tamanho = tamanho;
+	}
+
+
 	public void menuUsuario(){
 		Scanner sc = new Scanner(System.in);
-		int opcao = 1;
+		int opcao = 1;		
+		
+		
 		while(opcao !=0){
 		System.out.println("1- Cadastrar usuario");
 		System.out.println("2- Alterar usuario");
@@ -35,13 +49,15 @@ public class Usuario {
 			case 1:
 				//Inserir usuario	
 				Scanner sc01 = new Scanner(System.in);
+				Scanner sc02 = new Scanner(System.in);
+				Scanner sc03 = new Scanner(System.in);
 					
 				System.out.println("nome:");
-				String opcao99 = sc.nextLine();
+				String opcao99 = sc01.nextLine();
 				System.out.println("endereço:");
-				String opcao2 = sc.nextLine();
+				String opcao2 = sc02.nextLine();
 				System.out.println("CPF");
-				int opcao3 = sc.nextInt();
+				int opcao3 = sc03.nextInt();
 				
 				String insertTableSQL = "INSERT INTO usuario"
 				+ "( nome, endereco, cpf) VALUES"
@@ -80,6 +96,34 @@ public class Usuario {
 					
 				break;
 				
+//			case 3:
+//				Scanner scidusuario = new Scanner(System.in);
+//				System.out.println("digite o id do usuario");
+//				int iddousuario = scidusuario.nextInt();
+//				
+//				
+//				
+//				String sqlDelLivro = "select * from emprestimo where idUsuario = ?";
+//				 PreparedStatement pstmt = conn.prepareStatement(sqlDelLivro);   
+//			     pstmt.setInt(1, iddousuario);
+//				
+//				while(rm.next())  
+//				{  
+//
+//					int isbn = rm.getInt("isbn");  
+//					String autor = rm.getString("autor");  
+//					String titulo = rm.getString("titulo");
+//					int edicao = rm.getInt("edicao");
+//					int quantidade = rm.getInt("quantidade");
+////					
+//					System.out.println("isbn: "+isbn+" titulo: "+titulo+" autor:"+autor+" edicao:"+edicao+" Quantidade:"+quantidade);
+//				
+//				}
+//				
+//				
+//				
+//				
+//				break;
 			case 4:
 				
 			     //deletar usuario	    
@@ -107,8 +151,9 @@ public class Usuario {
 					String nome = rs.getString("nome");  
 					String endereco = rs.getString("endereco");
 					int cpf = rs.getInt("cpf");
+					int limite_emprestimos = rs.getInt("limite_emprestimos");
 					
-					System.out.println("ID: "+id+" NOME: "+nome+" ENDERECO:"+endereco+" CPF:"+cpf);
+					System.out.println("ID: "+id+" NOME: "+nome+" ENDERECO:"+endereco+" CPF:"+cpf+" Limite de emprestimos:"+limite_emprestimos);
 					
 				}
 			break;
