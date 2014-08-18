@@ -48,12 +48,13 @@ public class Biblioteca {
 			break;
 			
 		case 4:
-			System.out.println("devolucao...");
+			Devolucao devolucao = new Devolucao();
+			devolucao.menuDevolucao();
 			
 		case 0:
 			
 		default:
-			System.out.println("Este não é um dia válido!");
+			System.out.println("Este não é um numero válido!");
 		
 		}
 		
