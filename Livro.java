@@ -42,6 +42,7 @@ public class Livro {
 			Scanner sc2 = new Scanner(System.in);
 			Scanner sc3 = new Scanner(System.in);
 			Scanner sc4 = new Scanner(System.in);
+			Scanner sc5 = new Scanner(System.in);
 			
 			System.out.println("ISBN");
 			int opcaoLivro = sc1.nextInt();
@@ -51,10 +52,12 @@ public class Livro {
 			String opcaoLivro3 = sc3.nextLine();
 			System.out.println("Edicao");
 			int opcaoLivro4 = sc4.nextInt();
+			System.out.println("Quantidade");
+			int opcaoLivro5 = sc5.nextInt();
 			
 			String insertTableSQL = "INSERT INTO livro"
-			+ "(isbn, autor, titulo, edicao) values"
-			+ "(?,?,?,?)";
+			+ "(isbn, autor, titulo, edicao, quantidade) values"
+			+ "(?,?,?,?,?)";
 			
 			//PREPARA DOS DADOS do usuario
 			preparedStatement = conn.prepareStatement(insertTableSQL);
@@ -62,6 +65,7 @@ public class Livro {
 			preparedStatement.setString(2,opcaoLivro2);
 			preparedStatement.setString(3, opcaoLivro3);
 			preparedStatement.setInt(4, opcaoLivro4);
+			preparedStatement.setInt(5, opcaoLivro5);
 			
 			// execute insert SQL stetement (sei nao pra que serve)			
 			int resultado = preparedStatement.executeUpdate();
@@ -76,6 +80,7 @@ public class Livro {
 			Scanner scAlt2 = new Scanner(System.in);
 			Scanner scAlt3 = new Scanner(System.in);
 			Scanner scAlt4 = new Scanner(System.in);
+			Scanner scAlt5 = new Scanner(System.in);
 			
 			System.out.println("digite o isbn do livro");
 			int op = scAlt.nextInt();
@@ -85,8 +90,10 @@ public class Livro {
 			String op3 = scAlt3.nextLine();
 			System.out.println("Edicao:");
 			int op4 = scAlt4.nextInt();
+			System.out.println("Quantidade:");
+			int op5 = scAlt5.nextInt();
 			
-			String sql = "UPDATE livro SET autor='"+op2+"',titulo='"+op3+"',edicao='"+op4+"' WHERE isbn ="+op+"";    
+			String sql = "UPDATE livro SET autor='"+op2+"',titulo='"+op3+"',edicao='"+op4+"',quantidade='"+op5+"' WHERE isbn ="+op+"";    
 			int updateCount = stm.executeUpdate(sql);  
 			System.out.println(updateCount);
 			
@@ -123,8 +130,9 @@ public class Livro {
 				String autor = rm.getString("autor");  
 				String titulo = rm.getString("titulo");
 				int edicao = rm.getInt("edicao");
+				int quantidade = rm.getInt("quantidade");
 				
-				System.out.println("isbn: "+isbn+" titulo: "+titulo+" autor:"+autor+" edicao:"+edicao);
+				System.out.println("isbn: "+isbn+" titulo: "+titulo+" autor:"+autor+" edicao:"+edicao+" Quantidade:"+quantidade);
 			
 			}			
 			
