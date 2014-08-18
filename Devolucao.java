@@ -10,7 +10,6 @@ public class Devolucao {
 
 	public void menuDevolucao(){
 	
-			
 		Connection conn;
 		PreparedStatement preparedStatement;
 		Statement stm;
@@ -31,29 +30,6 @@ public class Devolucao {
 		     pstmt.setInt(1, idEmprestimo);  
      	     int deleteCount = pstmt.executeUpdate(); 
      	     System.out.println(deleteCount);
-			
-			
-     	     
-     	     
-//     	  //verifica limite de emprestimos 	        
-//				ResultSet rs = stm.executeQuery("SELECT * FROM usuario"); 
-//				while(rs.next())  
-//				{  
-//				int limite_emprestimos = rs.getInt("limite_emprestimos");
-//					
-//				
-//				if(limite_emprestimos>3){
-//					System.out.println("Limite de emprestimos atingido");
-//				}
-//				
-//				else{
-//					
-//					
-//				}
-//				}
-			
-			
-		
 	}
 		
 		catch (SQLException e) {
@@ -77,6 +53,6 @@ public class Devolucao {
 			
 				
 		
-	}//menuLivro
+	}
 	
-}//livro
+}
