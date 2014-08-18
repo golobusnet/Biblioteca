@@ -8,8 +8,7 @@ import java.util.Scanner;
 
 public class Emprestimo {
 
-	public void menuEmprestimo(){
-	
+public void menuEmprestimo(){
 			
 		Connection conn;
 		PreparedStatement preparedStatement;
@@ -21,24 +20,7 @@ public class Emprestimo {
 					"jdbc:mysql://127.0.0.1:3306/biblioteca?user=root&password=123456");
 			
 			stm = conn.createStatement();
-			
-			
-			
-	     	  //verifica limite de emprestimos 	        
-					
-			
-//			ResultSet rs = stm.executeQuery("SELECT * FROM usuario"); 
-//					while(rs.next())  
-//				{  
-//					int limite_emprestimos = rs.getInt("limite_emprestimos");
-//										
-//					if(limite_emprestimos>=3){
-//						System.out.println("Limite de emprestimos atingido");
-//					}
-//					
-//					else{
-//						
-						
+
 						Scanner sc = new Scanner(System.in);
 						Scanner sc2 = new Scanner(System.in);
 						Scanner sc3 = new Scanner(System.in);
@@ -48,12 +30,10 @@ public class Emprestimo {
 						String opcao4 = sc.nextLine();
 						System.out.println("Digite a ISBN do livro para emprestimo");
 						String opcao3 = sc2.nextLine();
-						System.out.println("data do emprestimo:");
+						System.out.println("data do emprestimo(aaaa-mm-dd):");
 						String opcao= sc3.nextLine();
-						System.out.println("data para devolucao:");
+						System.out.println("data para devolucao(aaaa-mm-dd):");
 						String opcao2 = sc4.nextLine();
-
-						
 						
 						String insertTableSQL = "INSERT INTO emprestimo"
 						+ "(emprestimo, devolucao, isbnLivro, idUsuario ) values"
@@ -64,34 +44,11 @@ public class Emprestimo {
 						preparedStatement.setString(2,opcao2);
 						preparedStatement.setString(3, opcao3);
 						preparedStatement.setString(4, opcao4);
-						
-									
+
 						int resultado = preparedStatement.executeUpdate();
 						System.out.println(resultado);
-						
-					
-					
-				
-					
-					//}	
-						
-				//	}
 					}
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-		
+	
 		catch (SQLException e) {
 			// TODO Auto-generated catch block
 			//System.out.println("� ERRO FOI AQUI...");
@@ -109,10 +66,6 @@ public class Emprestimo {
 			// TODO Auto-generated catch block
 			e.getMessage();
 			e.printStackTrace();
-		}
-			
-				
-		
-	}//menuLivro
-	
-}//livro
+		}	
+	}	
+}
