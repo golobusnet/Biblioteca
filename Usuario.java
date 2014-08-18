@@ -96,34 +96,31 @@ public class Usuario {
 					
 				break;
 				
-//			case 3:
-//				Scanner scidusuario = new Scanner(System.in);
-//				System.out.println("digite o id do usuario");
-//				int iddousuario = scidusuario.nextInt();
-//				
-//				
-//				
-//				String sqlDelLivro = "select * from emprestimo where idUsuario = ?";
-//				 PreparedStatement pstmt = conn.prepareStatement(sqlDelLivro);   
-//			     pstmt.setInt(1, iddousuario);
-//				
-//				while(rm.next())  
-//				{  
-//
-//					int isbn = rm.getInt("isbn");  
-//					String autor = rm.getString("autor");  
-//					String titulo = rm.getString("titulo");
-//					int edicao = rm.getInt("edicao");
-//					int quantidade = rm.getInt("quantidade");
-////					
-//					System.out.println("isbn: "+isbn+" titulo: "+titulo+" autor:"+autor+" edicao:"+edicao+" Quantidade:"+quantidade);
-//				
-//				}
-//				
-//				
-//				
-//				
-//				break;
+			case 3:
+				Scanner scidusuario = new Scanner(System.in);
+				System.out.println("digite o id do usuario");
+				int iddousuario = scidusuario.nextInt();
+
+				
+			 	//exibir emprestimos
+				ResultSet rs2 = stm.executeQuery("SELECT * FROM emprestimo where idUsuario = "+iddousuario); 
+				while(rs2.next())  
+				{  
+	
+					int id = rs2.getInt("idEmprestimo");  
+					String emprestimo = rs2.getString("emprestimo");  
+					String devolucao = rs2.getString("devolucao");
+					int isbnLivro = rs2.getInt("isbnLivro");
+					int idUsuario = rs2.getInt("idUsuario");
+					
+					System.out.println("IDEmprestimo: "+id+" data emprestimo: "+emprestimo+" devolucao:"+devolucao+" ISBNLivro:"+isbnLivro);
+					
+				}
+				
+			
+				
+				
+				break;
 			case 4:
 				
 			     //deletar usuario	    
